@@ -1,0 +1,10 @@
+{
+  "lk.ejs": {
+    "layoutPage": "sistem",
+    "description": ""
+  },
+  "libraries.ejs": {
+    "layoutPage": "sistem",
+    "description": ""
+  }
+}

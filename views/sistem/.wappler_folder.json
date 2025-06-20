@@ -2,5 +2,13 @@
   "dashbord.ejs": {
     "layoutPage": "sistem",
     "description": ""
+  },
+  "profile.ejs": {
+    "layoutPage": "sistem",
+    "description": ""
+  },
+  "download.ejs": {
+    "layoutPage": "sistem",
+    "description": ""
   }
 }
