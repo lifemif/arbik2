@@ -1,0 +1,40 @@
+{
+  "name": "security",
+  "module": "auth",
+  "action": "provider",
+  "options": {
+    "secret": "omGKMYPuQ2EvNx3",
+    "provider": "Database",
+    "connection": "db_arbik2",
+    "users": {
+      "table": "user",
+      "identity": "UUID",
+      "username": "login",
+      "password": "password"
+    },
+    "permissions": {
+      "users": {
+        "table": "user",
+        "identity": "UUID",
+        "conditions": [
+          {
+            "column": "role",
+            "operator": "=",
+            "value": "user"
+          },
+          {
+            "column": "status",
+            "operator": "=",
+            "value": "open"
+          }
+        ]
+      }
+    }
+  },
+  "meta": [
+    {
+      "name": "identity",
+      "type": "text"
+    }
+  ]
+}

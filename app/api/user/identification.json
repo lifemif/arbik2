@@ -1,0 +1,157 @@
+{
+  "name": "",
+  "module": "core",
+  "action": "condition",
+  "options": {
+    "if": "{{identity}}",
+    "then": {
+      "steps": {
+        "name": "query",
+        "module": "dbconnector",
+        "action": "single",
+        "options": {
+          "connection": "db_arbik2",
+          "sql": {
+            "type": "SELECT",
+            "columns": [
+              {
+                "table": "user",
+                "column": "userID"
+              },
+              {
+                "table": "user",
+                "column": "UUID"
+              },
+              {
+                "table": "user",
+                "column": "login"
+              },
+              {
+                "table": "user",
+                "column": "password"
+              },
+              {
+                "table": "user",
+                "column": "avatar"
+              },
+              {
+                "table": "user",
+                "column": "email"
+              },
+              {
+                "table": "user",
+                "column": "tip_svazi"
+              },
+              {
+                "table": "user",
+                "column": "telefon"
+              },
+              {
+                "table": "user",
+                "column": "marketmaker"
+              },
+              {
+                "table": "user",
+                "column": "role"
+              },
+              {
+                "table": "user",
+                "column": "status"
+              }
+            ],
+            "table": {
+              "name": "user"
+            },
+            "primary": "userID",
+            "joins": [],
+            "wheres": {
+              "condition": "AND",
+              "rules": [
+                {
+                  "id": "user.UUID",
+                  "field": "user.UUID",
+                  "type": "string",
+                  "operator": "equal",
+                  "value": "{{identity}}",
+                  "data": {
+                    "table": "user",
+                    "column": "UUID",
+                    "type": "text",
+                    "columnObj": {
+                      "type": "string",
+                      "maxLength": 36,
+                      "primary": false,
+                      "nullable": true,
+                      "name": "UUID"
+                    }
+                  },
+                  "operation": "="
+                }
+              ],
+              "conditional": null,
+              "valid": true
+            },
+            "query": "SELECT userID, UUID, login, password, avatar, email, tip_svazi, telefon, marketmaker, role, status\nFROM user\nWHERE UUID = :P1 /* {{identity}} */",
+            "params": [
+              {
+                "operator": "equal",
+                "type": "expression",
+                "name": ":P1",
+                "value": "{{identity}}"
+              }
+            ]
+          }
+        },
+        "output": true,
+        "meta": [
+          {
+            "type": "number",
+            "name": "userID"
+          },
+          {
+            "type": "text",
+            "name": "UUID"
+          },
+          {
+            "type": "text",
+            "name": "login"
+          },
+          {
+            "type": "text",
+            "name": "password"
+          },
+          {
+            "type": "file",
+            "name": "avatar"
+          },
+          {
+            "type": "text",
+            "name": "email"
+          },
+          {
+            "type": "text",
+            "name": "tip_svazi"
+          },
+          {
+            "type": "text",
+            "name": "telefon"
+          },
+          {
+            "type": "text",
+            "name": "marketmaker"
+          },
+          {
+            "type": "text",
+            "name": "role"
+          },
+          {
+            "type": "text",
+            "name": "status"
+          }
+        ],
+        "outputType": "object"
+      }
+    }
+  },
+  "outputType": "boolean"
+}
