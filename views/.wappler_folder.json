@@ -1,0 +1,10 @@
+{
+  "registration.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  },
+  "dashbord.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  }
+}

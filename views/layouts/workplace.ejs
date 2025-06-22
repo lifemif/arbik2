@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+
+<head>
+    <base href="/">
+    <script src="/dmxAppConnect/dmxAppConnect.js"></script>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/bootstrap/5/css/bootstrap.min.css" />
+    <script src="/dmxAppConnect/dmxRouting/dmxRouting.js" defer=""></script>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/dmxAppConnect/dmxBootstrap5Navigation/dmxBootstrap5Navigation.js" defer=""></script>
+    <script src="/dmxAppConnect/dmxBrowser/dmxBrowser.js" defer=""></script>
+    <script src="/dmxAppConnect/dmxBootstrap5Offcanvas/dmxBootstrap5Offcanvas.js" defer=""></script>
+</head>
+
+<body is="dmx-app" id="sistem">
+
+
+
+    <dmx-serverconnect id="sc_identifikation" url="/api/user/identification"></dmx-serverconnect>
+    <header class="bg-light">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col d-flex justify-content-between align-items-center">
+                    <img src="/assets/images/logo2-no-bg-preview (carve_photos)-no-bg-preview (carve.photos).png" width="60" height="40" class="mt-2 mb-2">
+
+                    <div class="dropdown">
+                        <button id="dropdown1" class="btn dropdown-toggle btn-light" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{sc_identifikation.data.query.UUID}}&nbsp;</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdown1">
+                            <a class="dropdown-item" href="/sistem/profile">Профиль</a>
+                            <a class="dropdown-item" href="/info/download">Загрузка</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Выход</a>
+                        </div>
+                    </div>
+                    <button id="btn3" class="btn text-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvas1"><i class="fas fa-university fa-lg"></i>&nbsp;Банк</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-2 col-lg-1 col-1 style5 d-flex justify-content-center align-items-start align-self-start flex-column">
+                    <a href="/sistem/dashbord" class="btn style6" id="home">
+                        <i class="fas fa-home fa-lg"></i>
+                    </a>
+                    <a href="/events/eventis" class="btn style6" id="event">
+                        <i class="fas fa-calendar-alt fa-lg"></i>
+                    </a>
+                    <a href="/sport_line/sporting_line" class="btn style6" id="sport_line">
+                        <i class="fas fa-volleyball-ball fa-lg"></i>
+                    </a>
+                    <a href="/coin/currency" class="btn style6" id="currency">
+                        <i class="fas fa-coins fa-lg"></i>
+                    </a>
+                    <a href="/wallet/wallet" class="btn style6" id="currency1">
+                        <i class="fas fa-wallet fa-lg"></i>
+                    </a>
+                    <a href="/library/libraries" class="btn style6" id="librori">
+                        <i class="fas fa-book-open fa-lg"></i>
+                    </a>
+                </div>
+                <div class="col">
+                    <div is="dmx-view" id="content">
+                        <%- await include(content, locals); %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="offcanvas offcanvas-end style4" id="offcanvas1" is="dmx-bs5-offcanvas" tabindex="-1">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Offcanvas title</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <p>Offcanvas body text goes here.</p>
+        </div>
+    </div>
+    <script src="/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="index" appConnect="local" components="{dmxBootstrap5Modal:{},dmxBrowser:{},dmxNotifications:{}}" bootstrap_icons="local" -->
+<dmx-notifications id="notifies1"></dmx-notifications>
+<dmx-serverconnect id="sc_identifikation" noload url="/api/user/identification"></dmx-serverconnect>
+<div is="dmx-browser" id="browser1"></div>
+<div class="modal bg-light" id="modal1" is="dmx-bs5-modal" tabindex="-1" nocloseonclick="true" show="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <div class="d-flex justify-content-center align-items-center"><img src="/assets/images/logo2-no-bg-preview (carve_photos)-no-bg-preview (carve.photos).png" width="60" height="50"></div>
+
+            </div>
+            <div class="modal-body">
+                <form id="fm_login" is="dmx-serverconnect-form" method="post" action="/api/user/login" dmx-on:success="sc_identifikation.load();notifies1.success('Удачный вход');fm_login.reset();browser1.goto('/sistem/dashbord')" dmx-on:unauthorized="notifies1.danger('Логин или пароль введёт не верно');fm_login.reset()">
+                    <input id="login" name="login" class="form-control mt-2 mb-2" placeholder="Логин">
+                    <input id="pass" name="pass" class="form-control mt-2" placeholder="Пароль" type="password">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm" data-bs-dismiss="modal" dmx-on:click="browser1.goto('/registration')">Регистрация</button>
+                <button type="button" class="btn btn-outline-primary btn-sm" dmx-on:click="fm_login.submit()" dmx-on:keydown.enter="fm_login.submit()" dmx-on:keypress.enter="fm_login.submit()" dmx-on:keyup.enter="fm_login.submit()">Вход в систему</button>
+            </div>
+        </div>
+    </div>
+</div>
+<meta name="ac:route" content="/">

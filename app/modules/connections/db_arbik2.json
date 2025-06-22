@@ -1,0 +1,15 @@
+{
+  "name": "db_arbik2",
+  "module": "dbconnector",
+  "action": "connect",
+  "options": {
+    "client": "mysql",
+    "connection": {
+      "host": "lifemif.beget.tech",
+      "user": "lifemif_arbik2",
+      "password": "Lm_3275723",
+      "database": "lifemif_arbik2"
+    }
+  },
+  "fileName": "db_arbik2.json"
+}

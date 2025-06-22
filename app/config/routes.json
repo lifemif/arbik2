@@ -1,0 +1,55 @@
+{
+  "routes": [
+    {
+      "path": "/",
+      "page": "index",
+      "routeType": "page",
+      "layout": "main"
+    },
+    {
+      "path": "/registration",
+      "page": "registration",
+      "layout": "main"
+    },
+    {
+      "path": "/sistem/dashbord",
+      "page": "sistem/dashbord",
+      "layout": "sistem"
+    },
+    {
+      "path": "/sistem/profile",
+      "page": "sistem/profile",
+      "layout": "sistem"
+    },
+    {
+      "path": "/info/download",
+      "page": "info/download",
+      "layout": "sistem"
+    },
+    {
+      "path": "/library/libraries",
+      "page": "library/libraries",
+      "layout": "sistem"
+    },
+    {
+      "path": "/coin/currency",
+      "page": "coin/currency",
+      "layout": "info"
+    },
+    {
+      "path": "/wallet/wallet",
+      "page": "wallet/wallet",
+      "layout": "info"
+    },
+    {
+      "path": "/events/eventis",
+      "page": "events/eventis",
+      "layout": "workplace"
+    },
+    {
+      "path": "/sport_line/sporting_line",
+      "page": "sport_line/sporting_line",
+      "layout": "workplace"
+    }
+  ]
+}
