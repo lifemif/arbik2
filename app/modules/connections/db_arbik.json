@@ -1,5 +1,5 @@
 {
-  "name": "db_arbik2",
+  "name": "db_arbik",
   "module": "dbconnector",
   "action": "connect",
   "options": {
@@ -11,5 +11,5 @@
       "database": "lifemif_arbik2"
     }
   },
-  "fileName": "db_arbik2.json"
+  "fileName": "db_arbik.json"
 }

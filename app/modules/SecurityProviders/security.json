@@ -5,7 +5,7 @@
   "options": {
     "secret": "omGKMYPuQ2EvNx3",
     "provider": "Database",
-    "connection": "db_arbik2",
+    "connection": "db_arbik",
     "users": {
       "table": "user",
       "identity": "UUID",

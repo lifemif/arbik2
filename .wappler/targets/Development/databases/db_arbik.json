@@ -14,6 +14,95 @@
           "engine": "InnoDB",
           "schema": "lifemif_arbik2",
           "collation": "utf8_general_ci"
+        },
+        "columns": {
+          "userID": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "UUID": {
+            "db": {
+              "type": "string",
+              "maxLength": 36,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "login": {
+            "db": {
+              "type": "string",
+              "maxLength": 250,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "password": {
+            "db": {
+              "type": "string",
+              "maxLength": 120,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "avatar": {
+            "db": {
+              "type": "binary",
+              "maxLength": 65535,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "email": {
+            "db": {
+              "type": "string",
+              "maxLength": 256,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "tip_svazi": {
+            "db": {
+              "type": "string",
+              "maxLength": 256,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "telefon": {
+            "db": {
+              "type": "string",
+              "maxLength": 256,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "marketmaker": {
+            "db": {
+              "type": "string",
+              "maxLength": 256,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "role": {
+            "db": {
+              "type": "string",
+              "maxLength": 250,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "status": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": true
+            }
+          }
         }
       }
     },

@@ -10,7 +10,7 @@
         "module": "dbconnector",
         "action": "single",
         "options": {
-          "connection": "db_arbik2",
+          "connection": "db_arbik",
           "sql": {
             "type": "SELECT",
             "columns": [
