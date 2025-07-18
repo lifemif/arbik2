@@ -1,12 +1,53 @@
-<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="registration" appConnect="local" -->
-<meta name="ac:route" content="/registration">
-<div class="container wappler-block pt-5 pb-5">
-    <div class="row">
-        <div class="text-center col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
-            <h4>Fancy display heading<br><small class="text-muted">With faded secondary text</small></h4>
-            <p>A nice paragraph</p>
-            <button class="btn btn-primary">Button</button>
+<div is="dmx-browser" id="browser1"></div><!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="registration" appConnect="local" components="{dmxBootstrap5Modal:{},dmxNotifications:{},dmxBrowser:{},dmxValidator:{}}" -->
+<dmx-notifications id="notifies1">
+
+</dmx-notifications>
+<div class="modal bg-light" id="modal_reg" is="dmx-bs5-modal" tabindex="-1" nocloseonclick="true" show="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="/"><img src="/assets/images/logo2-no-bg-preview (carve_photos)-no-bg-preview (carve.photos).png" width="60"></a>
+            </div>
+            <div class="modal-body">
+                <form is="dmx-serverconnect-form" id="Form_reg" method="post" action="/api/user/new_users" dmx-generator="bootstrap5" dmx-form-type="vertical" dmx-on:success="browser1.goto('/')" dmx-on:error="notifies1.danger('Чё-то пошло не так!!!');Form_reg.reset()">
+                    <div class="form-group mb-3">
+                        <label for="inp_login">Логин</label>
+                        <input type="text" class="form-control form-control-sm" id="inp_login" name="login" aria-describedby="inp_login_help" required="" data-msg-required="Обязательное поле!!!">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="inp_password">Пароль</label>
+                        <input type="password" class="form-control form-control-sm" id="inp_password" name="password" aria-describedby="inp_password_help" required="" data-msg-required="Обязательное поле!!!">
+                        <legend class="col-form-label">Пароль: {{inp_password.value}}</legend>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="inp_email">Email</label>
+                        <input type="email" class="form-control form-control-sm" id="inp_email" name="email" aria-describedby="inp_email_help" required="" data-rule-email="" data-msg-email="Это всё что хочешь только не мыло" data-msg-required="Обязательное поле!!!">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="inp_tip_svazi">Тип связи</label>
+                        <select id="inp_tip_svazi" class="form-select form-select-sm" name="tip_svazi" required="" data-msg-required="Обязательное поле!!!">
+                            <option selected="" value=""></option>
+                            <option value="Ватсап">Ватсап</option>
+                            <option value="Телеграмм">Телеграмм</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="inp_telefon">Телефон</label>
+                        <input type="text" class="form-control form-control-sm" id="inp_telefon" name="telefon" aria-describedby="inp_telefon_help" required="" data-msg-required="Обязательное поле!!!">
+                        <small id="bs5-form-group-help1" class="form-text text-muted">Телефон указывайте в формате +код страны (код оператора)номер телефона. +7(000)0000000</small>
+                    </div>
+                    <div class="row">
+
+
+                        <div class="col-3 align-self-center text-start"><button id="btn1" class="btn btn-sm" dmx-on:click="browser1.goto('/')">На главную</button></div>
+                        <div class="col text-end"><button id="btn2" class="btn btn-sm btn-outline-primary" dmx-on:click="Form_reg.submit()" dmx-bind:disabled="state.executing">Зарегистрироваться</button></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <h6 class="text-danger">ВНИМАНИЕ!!! Данные при регистрации указывайте реальные на emal придёт сформерованный UUID, телефон же нужен для нормальной идентификации Вас в чате. Иначе удаление из ситемы.</h6>
+            </div>
         </div>
     </div>
 </div>
-<!-- New Wappler Page -->
+<meta name="ac:route" content="/registration">

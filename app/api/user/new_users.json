@@ -1,0 +1,211 @@
+{
+  "meta": {
+    "$_POST": [
+      {
+        "type": "text",
+        "name": "login"
+      },
+      {
+        "type": "text",
+        "name": "password"
+      },
+      {
+        "type": "text",
+        "name": "email"
+      },
+      {
+        "type": "text",
+        "name": "tip_svazi"
+      },
+      {
+        "type": "text",
+        "name": "telefon"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "UUID_user",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "value": "{{UUID.substr(-10, 12)}}"
+        },
+        "meta": [],
+        "outputType": "text"
+      },
+      {
+        "name": "email",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "value": "{{$_POST.email.lowercase()}}"
+        },
+        "meta": [],
+        "outputType": "text"
+      },
+      {
+        "name": "login",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "value": "{{$_POST.login.lowercase()}}"
+        },
+        "meta": [],
+        "outputType": "text"
+      },
+      {
+        "name": "validate",
+        "module": "validator",
+        "action": "validate",
+        "options": {
+          "data": [
+            {
+              "name": "email",
+              "value": "{{email}}",
+              "rules": {
+                "db:notexists": {
+                  "param": {
+                    "connection": "db_arbik",
+                    "table": "user",
+                    "column": "email"
+                  },
+                  "message": "Такое мыло уже существует!!! Свяжитесь с администрацией!!!"
+                }
+              },
+              "fieldName": "email"
+            },
+            {
+              "name": "l",
+              "value": "{{login}}",
+              "rules": {
+                "db:notexists": {
+                  "param": {
+                    "connection": "db_arbik",
+                    "table": "user",
+                    "column": "login"
+                  },
+                  "message": "Придумайте другой логин!!! Такой уже есть"
+                }
+              },
+              "fieldName": "login"
+            }
+          ]
+        }
+      },
+      {
+        "name": "insert",
+        "module": "dbupdater",
+        "action": "insert",
+        "options": {
+          "connection": "db_arbik",
+          "sql": {
+            "type": "insert",
+            "values": [
+              {
+                "table": "user",
+                "column": "UUID",
+                "type": "text",
+                "value": "{{UUID_user}}"
+              },
+              {
+                "table": "user",
+                "column": "login",
+                "type": "text",
+                "value": "{{$_POST.login}}"
+              },
+              {
+                "table": "user",
+                "column": "password",
+                "type": "text",
+                "value": "{{$_POST.password}}"
+              },
+              {
+                "table": "user",
+                "column": "email",
+                "type": "text",
+                "value": "{{$_POST.email}}"
+              },
+              {
+                "table": "user",
+                "column": "tip_svazi",
+                "type": "text",
+                "value": "{{$_POST.tip_svazi}}"
+              },
+              {
+                "table": "user",
+                "column": "telefon",
+                "type": "text",
+                "value": "{{$_POST.telefon}}"
+              },
+              {
+                "table": "user",
+                "column": "marketmaker",
+                "type": "text",
+                "value": "Life_MiF"
+              },
+              {
+                "table": "user",
+                "column": "role",
+                "type": "text",
+                "value": "user"
+              },
+              {
+                "table": "user",
+                "column": "status",
+                "type": "text",
+                "value": "open"
+              }
+            ],
+            "table": "user",
+            "returning": "userID",
+            "query": "INSERT INTO user\n(UUID, login, password, email, tip_svazi, telefon, marketmaker, role, status) VALUES (:P1 /* {{UUID_user}} */, :P2 /* {{$_POST.login}} */, :P3 /* {{$_POST.password}} */, :P4 /* {{$_POST.email}} */, :P5 /* {{$_POST.tip_svazi}} */, :P6 /* {{$_POST.telefon}} */, 'Life_MiF', 'user', 'open')",
+            "params": [
+              {
+                "name": ":P1",
+                "type": "expression",
+                "value": "{{UUID_user}}"
+              },
+              {
+                "name": ":P2",
+                "type": "expression",
+                "value": "{{$_POST.login}}"
+              },
+              {
+                "name": ":P3",
+                "type": "expression",
+                "value": "{{$_POST.password}}"
+              },
+              {
+                "name": ":P4",
+                "type": "expression",
+                "value": "{{$_POST.email}}"
+              },
+              {
+                "name": ":P5",
+                "type": "expression",
+                "value": "{{$_POST.tip_svazi}}"
+              },
+              {
+                "name": ":P6",
+                "type": "expression",
+                "value": "{{$_POST.telefon}}"
+              }
+            ]
+          }
+        },
+        "meta": [
+          {
+            "name": "identity",
+            "type": "text"
+          },
+          {
+            "name": "affected",
+            "type": "number"
+          }
+        ]
+      }
+    ]
+  }
+}
